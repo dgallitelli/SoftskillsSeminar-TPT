@@ -17,7 +17,8 @@ Hoeffding Trees are born from the limitations of classical decision tree learner
 Deciding exactly how many examples are necessary at each node is still a critical point in building this kind of model. This can be done by using a statistical result known as the Hoeffding bound, which states that:
 
 >Suppose we have made n independent observations of a variable *r* with domain *R*, and computed their mean *x*. The Hoeffding bound states that, with probability *1 - delta* , the true mean of the variable is at least *x - epsilon*, where:
->\[\epsilon = \sqrt\frac{R^2 \ln(1/\delta)}{2n}\]
+
+![epsilon](./images/epsilon.png)
 
 Let's consider the following example.
 
@@ -25,11 +26,11 @@ Let's consider the following example.
 
 Let *G(x)* be the heuristic measure of choice, such as *Information Gain* or *Gini Index*. Once a new example arrives is read from the data stream, the chosen heuristic measure is computed for the attributes, and the two best attributes are selected. Then, a condition on the *G* values is checked:
 
-\[\Delta \bar{G} = \bar{G}(X_a) - \bar{G}(X_b) > \epsilon \]
+![condition](./images/condition.png)
 
-If the condition is met, then a new child node is created based on the best attribute. Otherwise, a new example is read from the stream.
+This condition represents that, with probability *1 - delta*, the error on the true difference in heuristic measure is very small. If the condition is met, then a new child node is created based on the best attribute. Otherwise, a new example is read from the stream.
 
-This way, the decision tree is built incrementally, with each example requiring to be read *at most once*. The statical properties of the Hoeffding bound implies that, with high probability, a Hoeffding tree is asymptotically identical to the decision tree built by a batch learner. These characteristics make the Hoeffding Tree suitable for data stream mining, since it takes a constant time to learn an instance, and it can make class prediction in parallel. 
+This way, the decision tree is built incrementally, with each example requiring to be read *at most once*. The statical properties of the Hoeffding bound implies that, with high probability, a Hoeffding tree is asymptotically identical to the decision tree built by a batch learner. These characteristics make the Hoeffding Tree suitable for data stream mining, since it takes a constant time to learn an instance, and it can make class prediction in parallel.
 
 ## Very Fast Decision Tree
 
