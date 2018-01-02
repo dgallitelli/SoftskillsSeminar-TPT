@@ -54,7 +54,7 @@ This way, the decision tree is built incrementally, with each example requiring 
 
 The Hoeffding tree algorithm was implemented into *Very Fast Decision Tree* learner (VFDT), which includes some enhancements for practical use. Among the others, VFDT introduces solutions for *ties* in the computation of the heuristic measures, the expensive *recomputation of G*, and *memory occupation*.
 
-In case of ties, potentially many examples will be required to decide between them with some confidence, which is wasteful since they’re basically equivalent. VFDT splits on the current best attribute. Recomputing G is actually pretty expensive. In VFDT it is possible to define a parameter for the minimum number of examples read before recomputing G. Memory was an issue for HT, meaning that the more the tree grew, the more memory it needed. VFDT deactivates inactive leaves, only keeping track of the probability of x falling into leaf l, times the observed error rate.
+In case of ties, potentially many examples will be required to decide between them with some confidence, which is wasteful since they’re basically equivalent. VFDT splits on the current best attribute. Recomputing *G* is actually pretty expensive. In VFDT it is possible to define a parameter for the minimum number of examples read before recomputing *G*. Memory was an issue for HT, meaning that the more the tree grew, the more memory it needed. VFDT deactivates inactive leaves, only keeping track of the probability of *x* falling into leaf *l*, times the observed error rate.
 
 <!-- Results -->
 
